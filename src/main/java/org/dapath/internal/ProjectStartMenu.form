@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+        <EtchetBorder/>
+      </Border>
+    </Property>
+    <Property name="requestFocusEnabled" type="boolean" value="false"/>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jCheckBoxSkipFirstLineOfExperimentFile" min="-2" pref="268" max="-2" attributes="0"/>
+                  <Component id="jButtonRunDASPA" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelExperimentFile" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelKeggFolder" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBoxCrosstalkHandling" min="-2" pref="209" max="-2" attributes="0"/>
+                          <Component id="jLabelNumberOfTopPathwayToVisualize" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
+                          <Component id="jLabelOutputFolder" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextFieldExperimentFile" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldKeggFolder" alignment="0" pref="170" max="32767" attributes="0"/>
+                          <Component id="jTextFieldNumberOfTopPathwayToVisualize" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCrosstalkHandlingLimit" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jTextFieldOutputFolder" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelKeggFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldKeggFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelExperimentFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldExperimentFile" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelOutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldOutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jCheckBoxSkipFirstLineOfExperimentFile" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelNumberOfTopPathwayToVisualize" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="jTextFieldNumberOfTopPathwayToVisualize" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jCheckBoxCrosstalkHandling" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                  <Component id="jTextFieldCrosstalkHandlingLimit" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonRunDASPA" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="690" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabelKeggFolder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kegg Folder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelExperimentFile">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Experiment File"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNumberOfTopPathwayToVisualize">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Number of top pathways to visualize&lt;/html&gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldKeggFolder">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldExperimentFile">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldNumberOfTopPathwayToVisualize">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxSkipFirstLineOfExperimentFile">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Skip first line of experiment file&lt;/html&gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxCrosstalkHandling">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Crosstalk handling for genes with pathway membership greater than&lt;/html&gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCrosstalkHandlingLimit">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonRunDASPA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Run DASPA"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRunDASPAActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelOutputFolder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Output Folder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldOutputFolder">
+    </Component>
+  </SubComponents>
+</Form>
