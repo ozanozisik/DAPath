@@ -9,4 +9,5 @@ DAPath is a Cytoscape app for discovering signaling paths and the pathways that 
 
 Sample KEGG folder and experiment file are provided. 
 The KEGG folder must contain hsaGeneIdsInPathways.txt and hsaGenes.txt files.
-Code will be available in a short period.
+
+Ozisik, O., Meguro, A., Mizuki, N., Diri, B., Sezerman, O.U., (2018), "A Scoring System to Evaluate the Impact of SNPs in a Path Related Context to Study Behcet's Disease Aetiology in Japanese Population", bioRxiv 316562, <a href="https://doi.org/10.1101/316562" target="_blank">DOI:10.1101/316562</a>
