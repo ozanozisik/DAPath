@@ -178,7 +178,7 @@ public class KEGGDownloader {
      */
     public static void downloadGeneList(String keggFolderPath) throws IOException {
 
-        createKeggFolderIfMissing(keggFolderPath);
+//        createKeggFolderIfMissing(keggFolderPath);
 
         URL url = new URL("http://rest.kegg.jp/list/hsa");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -204,20 +204,8 @@ public class KEGGDownloader {
 
     public static void createKeggFolderIfMissing(String keggFolderPath) {
         File keggFolderDir = new File(keggFolderPath);
-        File parentFolderDir=keggFolderDir.getParentFile();
         
         System.out.println(keggFolderDir.getAbsolutePath());
-        System.out.println(parentFolderDir.getAbsolutePath());
-        
-        // if the directory does not exist, create it
-        if (!parentFolderDir.exists()) {
-            try {
-                parentFolderDir.mkdir();
-            } catch (SecurityException se) {
-                System.out.println("Security settings do not allow creating keggPathways directory.");
-                throw new SecurityException(se.getMessage());
-            }
-        }
         
         
         // if the directory does not exist, create it

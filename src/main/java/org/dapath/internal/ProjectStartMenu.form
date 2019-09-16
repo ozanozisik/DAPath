@@ -28,7 +28,6 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jCheckBoxSkipFirstLineOfExperimentFile" min="-2" pref="268" max="-2" attributes="0"/>
-                  <Component id="jButtonRunDASPA" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelExperimentFile" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -46,6 +45,10 @@
                           <Component id="jTextFieldOutputFolder" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jButtonKEGGDownload" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonRunDAPath" alignment="0" pref="189" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
@@ -54,7 +57,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelKeggFolder" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldKeggFolder" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -81,9 +84,11 @@
                   <Component id="jCheckBoxCrosstalkHandling" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                   <Component id="jTextFieldCrosstalkHandlingLimit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButtonRunDASPA" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="690" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButtonKEGGDownload" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButtonRunDAPath" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="663" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,13 +136,13 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonRunDASPA">
+    <Component class="javax.swing.JButton" name="jButtonRunDAPath">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Run DASPA"/>
+        <Property name="text" type="java.lang.String" value="Run DAPath"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRunDASPAActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRunDAPathActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelOutputFolder">
@@ -146,6 +151,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldOutputFolder">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonKEGGDownload">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Download KEGG Files"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonKEGGDownloadActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Properties;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,6 +67,22 @@ public class RunDApath {
     public static void runDASPA() {
 
         try {
+            File folderDir = new File(Parameters.outputFolder);
+            if (!folderDir.exists()) {
+                JOptionPane.showMessageDialog(null, "Given output folder does not exist.");
+                return;
+            }
+            
+            folderDir = new File(Parameters.keggFolder);
+            if (!folderDir.exists()) {
+                JOptionPane.showMessageDialog(null, "Given KEGG Folder does not exist.");
+                return;
+            }
+            
+            
+            
+            
+            
 
             ArrayList<Pathway> pathwayList = new ArrayList<Pathway>();
             HashMap<String, String> geneSymbolToIdMap = new HashMap<String, String>();

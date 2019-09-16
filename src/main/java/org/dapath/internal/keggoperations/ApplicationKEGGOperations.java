@@ -12,12 +12,12 @@ public class ApplicationKEGGOperations {
 
     public static void main(String[] args) throws Exception {
 
-//        KEGGDownloader.downloadAll(ParametersKEGGOperations.keggFolder);
+//        KEGGDownloader.downloadAll("KEGGFiles");
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        Calendar cal = Calendar.getInstance();
-        KEGGToNetwork ktn=new KEGGToNetwork();
-        ktn.keggToNetwork(Parameters.keggFolder, "keggPPI_"+dateFormat.format(cal.getTime())+".txt");
+//        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+//        Calendar cal = Calendar.getInstance();
+//        KEGGToNetwork ktn=new KEGGToNetwork();
+//        ktn.keggToNetwork(Parameters.keggFolder, "keggPPI_"+dateFormat.format(cal.getTime())+".txt");
 
     }
     

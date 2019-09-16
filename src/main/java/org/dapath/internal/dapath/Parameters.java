@@ -8,7 +8,7 @@ public class Parameters {
     public static String[] expFilePath = {""};
     public static String outputFolder = "";
     public static boolean expFile_SkipFirstLine = true;//Skips the first line of the file (make this true if first line contains column names)
-    public static int topPathwayNumberToBeWritten = 30;
+    public static int topPathwayNumberToBeWritten = 20;
     /**
      * 0: Do nothing. 
      * 1: Assign Parameters.baseNodeProb to genes that are part of more than crossTalkLimit pathways.
@@ -47,4 +47,6 @@ public class Parameters {
 
 //    public static double pathScoreThreshold=Math.log(baseNodeProb) * (baseNodeProb/10) * (baseNodeProb/10)/Math.log(baseNodeProb * baseNodeProb * baseNodeProb);
     public static double pathScoreThreshold = 0;
+    
+    public static int pathSearchDepthLimit=10;
 }

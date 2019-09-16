@@ -341,9 +341,10 @@ public class GraphVisualizationCy {
             visualStyle.addVisualPropertyDependency(dependency);
         
         visualStyle.apply(networkView);
-        //CyActivator.visualMappingManager.setVisualStyle(visualStyle, networkView);
-        //networkView.updateView();
-        //CyActivator.cyDesktopService.getJFrame().repaint();
+        
+        CyActivator.visualMappingManager.setVisualStyle(visualStyle, networkView);
+//        networkView.updateView();
+//        CyActivator.cyDesktopService.getJFrame().repaint();
 
     }
     

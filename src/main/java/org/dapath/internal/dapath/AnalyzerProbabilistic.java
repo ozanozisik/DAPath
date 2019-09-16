@@ -80,7 +80,7 @@ public class AnalyzerProbabilistic {
 
                     ArrayList<EntryRelationTypePair> path = new ArrayList<EntryRelationTypePair>();
                     path.add(new EntryRelationTypePair(entry, RelationType.OUTNODE));
-                    dft(entry, path);
+                    dft(entry, path, Parameters.pathSearchDepthLimit, 0);
                 }
             }
         }
@@ -416,23 +416,26 @@ public class AnalyzerProbabilistic {
      * @param seed
      * @param path
      */
-    public void dft(Entry seed, ArrayList<EntryRelationTypePair> path) {
+    public void dft(Entry seed, ArrayList<EntryRelationTypePair> path, int depthLimit, int curDepth) {
         if (seed.getIncomingEntryNumber() == 0) {
 //			System.out.println(path.get(0).getEntry().getNameGr()+" "+path.get(0).getEntry().getEntryId());
 //			System.out.println(seed.getId()+" "+seed.getEntryId()+" "+seed.getNameGr());
             paths.add(path);
 
-        } else if (path.size() < this.pathway.getNumberOfEntries()) {
-            for (Relation relation : seed.getRelationsIncoming()) {
-                Entry neigh = relation.getEntry();
-                if (!path.contains(new EntryRelationTypePair(neigh, relation.getType()))) {
-//						for(EntryRelationTypePair er:path){
-//							System.out.print(er.getEntry().getEntryId()+" ");
-//						}
-//						System.out.println();
-                    ArrayList<EntryRelationTypePair> pathNew = new ArrayList<EntryRelationTypePair>(path);
-                    pathNew.add(new EntryRelationTypePair(neigh, relation.getType()));
-                    dft(neigh, pathNew);
+        } if(curDepth!=depthLimit){
+        
+            if (path.size() < this.pathway.getNumberOfEntries()) {
+                for (Relation relation : seed.getRelationsIncoming()) {
+                    Entry neigh = relation.getEntry();
+                    if (!path.contains(new EntryRelationTypePair(neigh, relation.getType()))) {
+    //						for(EntryRelationTypePair er:path){
+    //							System.out.print(er.getEntry().getEntryId()+" ");
+    //						}
+    //						System.out.println();
+                        ArrayList<EntryRelationTypePair> pathNew = new ArrayList<EntryRelationTypePair>(path);
+                        pathNew.add(new EntryRelationTypePair(neigh, relation.getType()));
+                        dft(neigh, pathNew, depthLimit, curDepth+1);
+                    }
                 }
             }
         }

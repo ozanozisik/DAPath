@@ -42,7 +42,7 @@ public class CyActivator extends AbstractCyActivator {
     
     @Override
     public void start(BundleContext context) throws Exception {
-        String version = new String("1.0");
+        String version = new String("1.1");
         CyActivator.context=context;
         appAdapter = getService(context, CyAppAdapter.class);
         networkViewManager = getService(context, CyNetworkViewManager.class);

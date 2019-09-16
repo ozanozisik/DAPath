@@ -6,9 +6,16 @@ package org.dapath.internal;
 import org.dapath.internal.dapath.Parameters;
 import org.dapath.internal.dapath.RunDApath;
 import java.awt.Component;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import org.cytoscape.application.CyApplicationManager;
 import org.cytoscape.application.swing.CySwingApplication;
@@ -17,6 +24,7 @@ import org.cytoscape.application.swing.CytoPanelName;
 import org.cytoscape.model.*;
 import org.cytoscape.view.model.CyNetworkView;
 import org.cytoscape.work.TaskMonitor;
+import org.dapath.internal.keggoperations.KEGGDownloader;
 
 public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelComponent {
 
@@ -58,9 +66,10 @@ public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelCom
         jCheckBoxSkipFirstLineOfExperimentFile = new javax.swing.JCheckBox();
         jCheckBoxCrosstalkHandling = new javax.swing.JCheckBox();
         jTextFieldCrosstalkHandlingLimit = new javax.swing.JTextField();
-        jButtonRunDASPA = new javax.swing.JButton();
+        jButtonRunDAPath = new javax.swing.JButton();
         jLabelOutputFolder = new javax.swing.JLabel();
         jTextFieldOutputFolder = new javax.swing.JTextField();
+        jButtonKEGGDownload = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setRequestFocusEnabled(false);
@@ -82,15 +91,23 @@ public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelCom
 
         jTextFieldCrosstalkHandlingLimit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jButtonRunDASPA.setText("Run DASPA");
-        jButtonRunDASPA.setToolTipText("");
-        jButtonRunDASPA.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRunDAPath.setText("Run DAPath");
+        jButtonRunDAPath.setToolTipText("");
+        jButtonRunDAPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRunDASPAActionPerformed(evt);
+                jButtonRunDAPathActionPerformed(evt);
             }
         });
 
         jLabelOutputFolder.setText("Output Folder");
+
+        jButtonKEGGDownload.setText("Download KEGG Files");
+        jButtonKEGGDownload.setActionCommand("Download KEGG Files");
+        jButtonKEGGDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKEGGDownloadActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -100,7 +117,6 @@ public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelCom
                 .add(27, 27, 27)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jCheckBoxSkipFirstLineOfExperimentFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 268, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButtonRunDASPA, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 189, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabelExperimentFile)
@@ -114,13 +130,16 @@ public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelCom
                             .add(jTextFieldKeggFolder, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .add(jTextFieldNumberOfTopPathwayToVisualize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jTextFieldCrosstalkHandlingLimit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextFieldOutputFolder))))
+                            .add(jTextFieldOutputFolder)))
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jButtonKEGGDownload, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jButtonRunDAPath, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(33, 33, 33)
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabelKeggFolder)
                     .add(jTextFieldKeggFolder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -142,19 +161,38 @@ public class ProjectStartMenu extends javax.swing.JPanel implements CytoPanelCom
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jCheckBoxCrosstalkHandling, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextFieldCrosstalkHandlingLimit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonRunDASPA)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jButtonKEGGDownload)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jButtonRunDAPath)
+                .addContainerGap(663, Short.MAX_VALUE))
         );
+
+        jButtonKEGGDownload.getAccessibleContext().setAccessibleName("Download KEGG Files");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRunDASPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRunDASPAActionPerformed
+    private void jButtonRunDAPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRunDAPathActionPerformed
         assignParameters();
         RunDApath.runDASPA();
-    }//GEN-LAST:event_jButtonRunDASPAActionPerformed
+    }//GEN-LAST:event_jButtonRunDAPathActionPerformed
+
+    private void jButtonKEGGDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKEGGDownloadActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        Calendar cal = Calendar.getInstance();
+
+        try {
+            String folderName="KEGGFiles_"+dateFormat.format(cal.getTime());
+            KEGGDownloader.downloadAll(folderName);
+            File keggFolderDir = new File(folderName);
+            jTextFieldKeggFolder.setText(keggFolderDir.getAbsolutePath());
+        } catch (IOException ex) {
+            Logger.getLogger(ProjectStartMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonKEGGDownloadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRunDASPA;
+    private javax.swing.JButton jButtonKEGGDownload;
+    private javax.swing.JButton jButtonRunDAPath;
     private javax.swing.JCheckBox jCheckBoxCrosstalkHandling;
     private javax.swing.JCheckBox jCheckBoxSkipFirstLineOfExperimentFile;
     private javax.swing.JLabel jLabelExperimentFile;
